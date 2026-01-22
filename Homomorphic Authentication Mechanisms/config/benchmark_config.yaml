@@ -1,0 +1,113 @@
+benchmark:
+  num_clients: [10, 50, 100, 500, 1000]
+  
+  num_rounds: [1, 5, 10, 20]
+  
+  message_sizes: [128, 512, 1024, 4096, 16384, 65536, 262144]
+  
+  vector_dimensions: [10, 50, 100, 500, 1000, 5000, 10000]
+  
+  iterations: 50
+
+algorithms:
+  homomorphic_signatures:
+    - name: "BLS"
+      enabled: true
+      library: "blspy"
+      homomorphic: true
+      open_source: true
+      link: "https://github.com/Chia-Network/blspy"
+      reference: "Boneh-Lynn-Shacham 2001"
+    
+    - name: "LHS"
+      enabled: true
+      library: "custom"
+      homomorphic: true
+      open_source: false
+      reference: "Catalano-Fiore 2011"
+      link: "https://eprint.iacr.org/2011/035"
+      note: "Implementation based on Catalano-Fiore linearly homomorphic signatures"
+    
+    - name: "Waters"
+      enabled: true
+      library: "custom"
+      homomorphic: true
+      open_source: false
+      reference: "Waters 2005"
+      link: "https://www.iacr.org/archive/eurocrypt2005/34940001/34940001.pdf"
+      note: "Implementation based on Waters homomorphic signature scheme"
+    
+    - name: "BonehBoyen"
+      enabled: true
+      library: "custom"
+      homomorphic: true
+      open_source: false
+      reference: "Boneh-Boyen 2004"
+      link: "https://www.iacr.org/archive/eurocrypt2004/30270001/30270001.pdf"
+      note: "Implementation based on Boneh-Boyen homomorphic signature scheme"
+    
+
+    - name: "RSA"
+      enabled: false
+      library: "pycryptodome"
+      homomorphic: false
+      open_source: true
+      link: "https://github.com/Legrandin/pycryptodome"
+      note: "Non-homomorphic alternative - serves as baseline comparison"
+    
+    - name: "EdDSA"
+      enabled: false
+      library: "cryptography"
+      homomorphic: false
+      open_source: true
+      link: "https://github.com/pyca/cryptography"
+      note: "Non-homomorphic alternative - demonstrates performance comparison"
+  
+  homomorphic_mac:
+    - name: "Additive_HMAC"
+      enabled: true
+      library: "custom"
+      homomorphic: true
+      reference: "Catalano-Fiore 2014"
+      link: "https://eprint.iacr.org/2014/415"
+    - name: "Linear_HMAC"
+      enabled: true
+      library: "custom"
+      homomorphic: true
+      reference: "Catalano-Fiore 2014"
+      link: "https://eprint.iacr.org/2014/415"
+    - name: "Polynomial_HMAC"
+      enabled: true
+      library: "custom"
+      homomorphic: true
+      reference: "Research papers on polynomial evaluation MACs"
+    - name: "Lattice_HMAC"
+      enabled: true
+      library: "custom"
+      homomorphic: true
+      reference: "LWE-based MAC constructions"
+  
+metrics:
+  collect_timing: true
+  collect_memory: true
+  collect_communication: true
+  
+  analyze_security: true
+  
+  output_format: ["json", "csv"]
+  output_dir: "results/"
+
+fl_simulation:
+  aggregation_method: "fedavg"
+  model_type: "linear"
+  learning_rate: 0.01
+  batch_size: 32
+  
+  malicious_clients: 0.1
+  malicious_server: false
+  
+  # FL Benchmarking parameters
+  num_rounds: [1, 5, 10, 20, 50]
+  model_sizes: [100, 500, 1000, 5000, 10000]
+  client_counts: [10, 50, 100, 500]
+

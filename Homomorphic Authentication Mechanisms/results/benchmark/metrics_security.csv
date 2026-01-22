@@ -1,0 +1,11 @@
+algorithm,security_notion,public_verifiability,homomorphic_operations,limitations,key_distribution,post_quantum,timestamp
+BLS,EUF-CMA,True,[],[],public_key,False,2025-12-15T21:32:40.565560
+LHS,EUF-CMA,True,[],[],public_key,False,2025-12-15T21:33:09.906463
+Waters,EUF-CMA,True,[],[],public_key,False,2025-12-15T21:37:36.366473
+BonehBoyen,EUF-CMA,True,[],[],public_key,False,2025-12-15T21:38:05.057019
+RSA,EUF-CMA,True,[],[],public_key,False,2025-12-15T21:39:09.784743
+EdDSA,EUF-CMA,True,[],[],public_key,False,2025-12-15T21:39:11.608190
+Additive_HMAC,EUF-CMA,False,[],[],shared_secret,False,2025-12-15T21:39:12.107349
+Linear_HMAC,EUF-CMA,False,[],[],shared_secret,False,2025-12-15T21:39:13.074248
+Polynomial_HMAC,EUF-CMA,False,[],[],shared_secret,False,2025-12-15T21:39:13.360438
+Lattice_HMAC,EUF-CMA,False,[],[],shared_secret,False,2025-12-15T21:39:23.587823

@@ -1,0 +1,1280 @@
+{
+  "BLS": {
+    "key_generation": {
+      "avg_time": 0.00016399860382080078,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 0.000516214370727539
+      },
+      "512": {
+        "avg_time": 0.0004908037185668945
+      },
+      "1024": {
+        "avg_time": 0.0004764080047607422
+      },
+      "4096": {
+        "avg_time": 0.00047555446624755857
+      },
+      "16384": {
+        "avg_time": 0.00048386573791503907
+      },
+      "65536": {
+        "avg_time": 0.0005230951309204102
+      },
+      "262144": {
+        "avg_time": 0.0006882190704345703
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 0.0011607170104980468
+      },
+      "512": {
+        "avg_time": 0.0012212467193603515
+      },
+      "1024": {
+        "avg_time": 0.001992216110229492
+      },
+      "4096": {
+        "avg_time": 0.0011768341064453125
+      },
+      "16384": {
+        "avg_time": 0.0012170505523681641
+      },
+      "65536": {
+        "avg_time": 0.0012021446228027343
+      },
+      "262144": {
+        "avg_time": 0.001396937370300293
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 0.0008110332489013671
+      },
+      "50": {
+        "avg_time": 0.004071216583251953
+      },
+      "100": {
+        "avg_time": 0.007829437255859375
+      },
+      "500": {
+        "avg_time": 0.03955526351928711
+      },
+      "1000": {
+        "avg_time": 0.08144429206848144
+      }
+    },
+    "communication": {
+      "signature_size": 96,
+      "public_key_size": 48,
+      "private_key_size": 0
+    },
+    "security": {
+      "algorithm": "BLS",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": true,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "public_key"
+    }
+  },
+  "LHS": {
+    "key_generation": {
+      "avg_time": 0.000796208381652832,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 0.0007519388198852539
+      },
+      "512": {
+        "avg_time": 0.0007440519332885743
+      },
+      "1024": {
+        "avg_time": 0.000727839469909668
+      },
+      "4096": {
+        "avg_time": 0.0006929445266723633
+      },
+      "16384": {
+        "avg_time": 0.0006866598129272461
+      },
+      "65536": {
+        "avg_time": 0.0007501888275146484
+      },
+      "262144": {
+        "avg_time": 0.0007461118698120117
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 0.001286921501159668
+      },
+      "512": {
+        "avg_time": 0.0012540149688720704
+      },
+      "1024": {
+        "avg_time": 0.0013280582427978515
+      },
+      "4096": {
+        "avg_time": 0.001265883445739746
+      },
+      "16384": {
+        "avg_time": 0.001266803741455078
+      },
+      "65536": {
+        "avg_time": 0.0012810659408569337
+      },
+      "262144": {
+        "avg_time": 0.001247730255126953
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 0.0
+      },
+      "50": {
+        "avg_time": 0.0
+      },
+      "100": {
+        "avg_time": 0.0
+      },
+      "500": {
+        "avg_time": 0.0
+      },
+      "1000": {
+        "avg_time": 0.0
+      }
+    },
+    "communication": {
+      "signature_size": 65,
+      "public_key_size": 65,
+      "private_key_size": 0
+    },
+    "security": {
+      "algorithm": "LHS",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": true,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "public_key"
+    }
+  },
+  "Waters": {
+    "key_generation": {
+      "avg_time": 0.005509419441223145,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 0.006394095420837402
+      },
+      "512": {
+        "avg_time": 0.006119375228881836
+      },
+      "1024": {
+        "avg_time": 0.006171774864196777
+      },
+      "4096": {
+        "avg_time": 0.006114935874938965
+      },
+      "16384": {
+        "avg_time": 0.006088643074035644
+      },
+      "65536": {
+        "avg_time": 0.006076736450195313
+      },
+      "262144": {
+        "avg_time": 0.006060361862182617
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 0.006612386703491211
+      },
+      "512": {
+        "avg_time": 0.006630721092224121
+      },
+      "1024": {
+        "avg_time": 0.006594882011413574
+      },
+      "4096": {
+        "avg_time": 0.006636543273925781
+      },
+      "16384": {
+        "avg_time": 0.006693100929260254
+      },
+      "65536": {
+        "avg_time": 0.006694250106811524
+      },
+      "262144": {
+        "avg_time": 0.006647758483886719
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 0.0
+      },
+      "50": {
+        "avg_time": 0.0
+      },
+      "100": {
+        "avg_time": 0.0
+      },
+      "500": {
+        "avg_time": 0.0
+      },
+      "1000": {
+        "avg_time": 0.0
+      }
+    },
+    "communication": {
+      "signature_size": 65,
+      "public_key_size": 65,
+      "private_key_size": 0
+    },
+    "security": {
+      "algorithm": "Waters",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": true,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "public_key"
+    }
+  },
+  "BonehBoyen": {
+    "key_generation": {
+      "avg_time": 6.875991821289062e-05,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 6.981849670410156e-05
+      },
+      "512": {
+        "avg_time": 6.812095642089844e-05
+      },
+      "1024": {
+        "avg_time": 6.833076477050782e-05
+      },
+      "4096": {
+        "avg_time": 6.923675537109374e-05
+      },
+      "16384": {
+        "avg_time": 7.570743560791016e-05
+      },
+      "65536": {
+        "avg_time": 9.70458984375e-05
+      },
+      "262144": {
+        "avg_time": 0.00017988204956054688
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 0.0006800651550292969
+      },
+      "512": {
+        "avg_time": 0.0006617116928100586
+      },
+      "1024": {
+        "avg_time": 0.0006757402420043946
+      },
+      "4096": {
+        "avg_time": 0.0006626224517822265
+      },
+      "16384": {
+        "avg_time": 0.0006878089904785157
+      },
+      "65536": {
+        "avg_time": 0.0006728458404541015
+      },
+      "262144": {
+        "avg_time": 0.0007516908645629883
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 0.006037368774414063
+      },
+      "50": {
+        "avg_time": 0.03004958152770996
+      },
+      "100": {
+        "avg_time": 0.05983945846557617
+      },
+      "500": {
+        "avg_time": 0.3018191814422607
+      },
+      "1000": {
+        "avg_time": 0.6062102603912354
+      }
+    },
+    "communication": {
+      "signature_size": 65,
+      "public_key_size": 65,
+      "private_key_size": 0
+    },
+    "security": {
+      "algorithm": "BonehBoyen",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": true,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "public_key"
+    }
+  },
+  "RSA": {
+    "key_generation": {
+      "avg_time": 0.29295801162719726,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 0.0011619234085083008
+      },
+      "512": {
+        "avg_time": 0.0011310243606567382
+      },
+      "1024": {
+        "avg_time": 0.001133737564086914
+      },
+      "4096": {
+        "avg_time": 0.0011623144149780274
+      },
+      "16384": {
+        "avg_time": 0.001271824836730957
+      },
+      "65536": {
+        "avg_time": 0.0014347362518310547
+      },
+      "262144": {
+        "avg_time": 0.002386798858642578
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 0.00025268077850341795
+      },
+      "512": {
+        "avg_time": 0.00027011394500732423
+      },
+      "1024": {
+        "avg_time": 0.00025362491607666015
+      },
+      "4096": {
+        "avg_time": 0.00026990413665771483
+      },
+      "16384": {
+        "avg_time": 0.00033147811889648436
+      },
+      "65536": {
+        "avg_time": 0.0005693101882934571
+      },
+      "262144": {
+        "avg_time": 0.0015296030044555664
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 1.18255615234375e-06
+      },
+      "50": {
+        "avg_time": 6.37054443359375e-06
+      },
+      "100": {
+        "avg_time": 8.27789306640625e-06
+      },
+      "500": {
+        "avg_time": 3.9567947387695314e-05
+      },
+      "1000": {
+        "avg_time": 8.149147033691407e-05
+      }
+    },
+    "communication": {
+      "signature_size": 256,
+      "public_key_size": 256,
+      "private_key_size": 0
+    },
+    "security": {
+      "algorithm": "RSA",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": true,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "public_key"
+    }
+  },
+  "EdDSA": {
+    "key_generation": {
+      "avg_time": 0.00047508716583251955,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 4.405498504638672e-05
+      },
+      "512": {
+        "avg_time": 4.285812377929687e-05
+      },
+      "1024": {
+        "avg_time": 4.397869110107422e-05
+      },
+      "4096": {
+        "avg_time": 4.191875457763672e-05
+      },
+      "16384": {
+        "avg_time": 6.15072250366211e-05
+      },
+      "65536": {
+        "avg_time": 0.00014915943145751953
+      },
+      "262144": {
+        "avg_time": 0.0004404544830322266
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 9.311676025390625e-05
+      },
+      "512": {
+        "avg_time": 9.265899658203125e-05
+      },
+      "1024": {
+        "avg_time": 9.325027465820313e-05
+      },
+      "4096": {
+        "avg_time": 9.579181671142577e-05
+      },
+      "16384": {
+        "avg_time": 0.00010457992553710937
+      },
+      "65536": {
+        "avg_time": 0.00014162063598632812
+      },
+      "262144": {
+        "avg_time": 0.0002829885482788086
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 3.147125244140625e-07
+      },
+      "50": {
+        "avg_time": 2.1457672119140625e-06
+      },
+      "100": {
+        "avg_time": 4.00543212890625e-06
+      },
+      "500": {
+        "avg_time": 9.260177612304688e-06
+      },
+      "1000": {
+        "avg_time": 2.0904541015625e-05
+      }
+    },
+    "communication": {
+      "signature_size": 64,
+      "public_key_size": 32,
+      "private_key_size": 0
+    },
+    "security": {
+      "algorithm": "EdDSA",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": true,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "public_key"
+    }
+  },
+  "Additive_HMAC": {
+    "key_generation": {
+      "avg_time": 5.898475646972656e-06,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 0.00019068241119384765
+      },
+      "512": {
+        "avg_time": 1.1148452758789062e-05
+      },
+      "1024": {
+        "avg_time": 8.24451446533203e-06
+      },
+      "4096": {
+        "avg_time": 1.1034011840820313e-05
+      },
+      "16384": {
+        "avg_time": 1.5740394592285155e-05
+      },
+      "65536": {
+        "avg_time": 4.0912628173828124e-05
+      },
+      "262144": {
+        "avg_time": 0.00012895584106445312
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 7.519721984863281e-06
+      },
+      "512": {
+        "avg_time": 7.886886596679687e-06
+      },
+      "1024": {
+        "avg_time": 8.025169372558593e-06
+      },
+      "4096": {
+        "avg_time": 9.202957153320313e-06
+      },
+      "16384": {
+        "avg_time": 1.6965866088867187e-05
+      },
+      "65536": {
+        "avg_time": 3.616809844970703e-05
+      },
+      "262144": {
+        "avg_time": 0.0001230478286743164
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 1.773834228515625e-06
+      },
+      "50": {
+        "avg_time": 7.28607177734375e-06
+      },
+      "100": {
+        "avg_time": 1.4257431030273437e-05
+      },
+      "500": {
+        "avg_time": 7.081031799316406e-05
+      },
+      "1000": {
+        "avg_time": 0.00014545440673828126
+      }
+    },
+    "communication": {
+      "signature_size": 32,
+      "public_key_size": 0,
+      "private_key_size": 32
+    },
+    "security": {
+      "algorithm": "Additive_HMAC",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": false,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "shared_secret"
+    }
+  },
+  "Linear_HMAC": {
+    "key_generation": {
+      "avg_time": 2.366065979003906e-05,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 3.0255317687988283e-05
+      },
+      "512": {
+        "avg_time": 2.0279884338378907e-05
+      },
+      "1024": {
+        "avg_time": 2.0112991333007812e-05
+      },
+      "4096": {
+        "avg_time": 1.9502639770507812e-05
+      },
+      "16384": {
+        "avg_time": 1.9488334655761718e-05
+      },
+      "65536": {
+        "avg_time": 2.2873878479003906e-05
+      },
+      "262144": {
+        "avg_time": 2.3322105407714842e-05
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 2.0074844360351563e-05
+      },
+      "512": {
+        "avg_time": 1.9741058349609374e-05
+      },
+      "1024": {
+        "avg_time": 2.0880699157714843e-05
+      },
+      "4096": {
+        "avg_time": 1.9216537475585936e-05
+      },
+      "16384": {
+        "avg_time": 1.9783973693847657e-05
+      },
+      "65536": {
+        "avg_time": 1.9474029541015627e-05
+      },
+      "262144": {
+        "avg_time": 1.9702911376953125e-05
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 0.0
+      },
+      "50": {
+        "avg_time": 0.0
+      },
+      "100": {
+        "avg_time": 0.0
+      },
+      "500": {
+        "avg_time": 0.0
+      },
+      "1000": {
+        "avg_time": 0.0
+      }
+    },
+    "communication": {
+      "signature_size": 32,
+      "public_key_size": 0,
+      "private_key_size": 32
+    },
+    "security": {
+      "algorithm": "Linear_HMAC",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": false,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "shared_secret"
+    }
+  },
+  "Polynomial_HMAC": {
+    "key_generation": {
+      "avg_time": 5.145072937011718e-06,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 3.3664703369140623e-06
+      },
+      "512": {
+        "avg_time": 3.0946731567382814e-06
+      },
+      "1024": {
+        "avg_time": 3.39508056640625e-06
+      },
+      "4096": {
+        "avg_time": 4.734992980957031e-06
+      },
+      "16384": {
+        "avg_time": 1.0290145874023437e-05
+      },
+      "65536": {
+        "avg_time": 3.202438354492187e-05
+      },
+      "262144": {
+        "avg_time": 0.00011834144592285157
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 3.147125244140625e-06
+      },
+      "512": {
+        "avg_time": 3.2711029052734377e-06
+      },
+      "1024": {
+        "avg_time": 3.5381317138671875e-06
+      },
+      "4096": {
+        "avg_time": 5.106925964355469e-06
+      },
+      "16384": {
+        "avg_time": 1.0223388671875e-05
+      },
+      "65536": {
+        "avg_time": 3.0994415283203125e-05
+      },
+      "262144": {
+        "avg_time": 0.00011759281158447266
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 0.0
+      },
+      "50": {
+        "avg_time": 0.0
+      },
+      "100": {
+        "avg_time": 0.0
+      },
+      "500": {
+        "avg_time": 0.0
+      },
+      "1000": {
+        "avg_time": 0.0
+      }
+    },
+    "communication": {
+      "signature_size": 32,
+      "public_key_size": 0,
+      "private_key_size": 32
+    },
+    "security": {
+      "algorithm": "Polynomial_HMAC",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": false,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "shared_secret"
+    }
+  },
+  "Lattice_HMAC": {
+    "key_generation": {
+      "avg_time": 0.00026906490325927734,
+      "iterations": 50
+    },
+    "signing": {
+      "128": {
+        "avg_time": 0.00021292686462402345
+      },
+      "512": {
+        "avg_time": 0.00021051406860351563
+      },
+      "1024": {
+        "avg_time": 0.00020956993103027344
+      },
+      "4096": {
+        "avg_time": 0.00021744728088378905
+      },
+      "16384": {
+        "avg_time": 0.0002153348922729492
+      },
+      "65536": {
+        "avg_time": 0.0002368307113647461
+      },
+      "262144": {
+        "avg_time": 0.00032243728637695315
+      }
+    },
+    "verification": {
+      "128": {
+        "avg_time": 2.956390380859375e-07
+      },
+      "512": {
+        "avg_time": 2.384185791015625e-07
+      },
+      "1024": {
+        "avg_time": 2.8133392333984374e-07
+      },
+      "4096": {
+        "avg_time": 2.6702880859375e-07
+      },
+      "16384": {
+        "avg_time": 3.24249267578125e-07
+      },
+      "65536": {
+        "avg_time": 2.7179718017578123e-07
+      },
+      "262144": {
+        "avg_time": 2.574920654296875e-07
+      }
+    },
+    "aggregation": {
+      "10": {
+        "avg_time": 0.0
+      },
+      "50": {
+        "avg_time": 0.0
+      },
+      "100": {
+        "avg_time": 0.0
+      },
+      "500": {
+        "avg_time": 0.0
+      },
+      "1000": {
+        "avg_time": 0.0
+      }
+    },
+    "communication": {
+      "signature_size": 32,
+      "public_key_size": 0,
+      "private_key_size": 2048
+    },
+    "security": {
+      "algorithm": "Lattice_HMAC",
+      "security_notion": "EUF-CMA",
+      "public_verifiability": false,
+      "homomorphic_operations": [
+        "aggregation"
+      ],
+      "limitations": [],
+      "key_distribution": "shared_secret"
+    }
+  },
+  "FL_BLS": {
+    "BLS_model100_clients10_rounds1": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.038536787033081055,
+      "avg_verify_time": 0.0050966739654541016,
+      "total_time": 0.038536787033081055
+    },
+    "BLS_model100_clients10_rounds5": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.037891054153442384,
+      "avg_verify_time": 0.005006933212280273,
+      "total_time": 0.18945527076721191
+    },
+    "BLS_model100_clients10_rounds10": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.034459495544433595,
+      "avg_verify_time": 0.004835057258605957,
+      "total_time": 0.34459495544433594
+    },
+    "BLS_model100_clients50_rounds1": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.16771507263183594,
+      "avg_verify_time": 0.02099132537841797,
+      "total_time": 0.16771507263183594
+    },
+    "BLS_model100_clients50_rounds5": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.16932282447814942,
+      "avg_verify_time": 0.02165060043334961,
+      "total_time": 0.8466141223907471
+    },
+    "BLS_model100_clients50_rounds10": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.16743829250335693,
+      "avg_verify_time": 0.02139277458190918,
+      "total_time": 1.6743829250335693
+    },
+    "BLS_model500_clients10_rounds1": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.03391432762145996,
+      "avg_verify_time": 0.004752635955810547,
+      "total_time": 0.03391432762145996
+    },
+    "BLS_model500_clients10_rounds5": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.03410792350769043,
+      "avg_verify_time": 0.0048099994659423825,
+      "total_time": 0.17053961753845215
+    },
+    "BLS_model500_clients10_rounds10": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.035706591606140134,
+      "avg_verify_time": 0.004980111122131347,
+      "total_time": 0.35706591606140137
+    },
+    "BLS_model500_clients50_rounds1": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.18074512481689453,
+      "avg_verify_time": 0.021128177642822266,
+      "total_time": 0.18074512481689453
+    },
+    "BLS_model500_clients50_rounds5": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.19011034965515136,
+      "avg_verify_time": 0.024943733215332033,
+      "total_time": 0.9505517482757568
+    },
+    "BLS_model500_clients50_rounds10": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.18100299835205078,
+      "avg_verify_time": 0.022102928161621092,
+      "total_time": 1.8100299835205078
+    },
+    "BLS_model1000_clients10_rounds1": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.037255048751831055,
+      "avg_verify_time": 0.005200862884521484,
+      "total_time": 0.037255048751831055
+    },
+    "BLS_model1000_clients10_rounds5": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.03734941482543945,
+      "avg_verify_time": 0.0051496028900146484,
+      "total_time": 0.18674707412719727
+    },
+    "BLS_model1000_clients10_rounds10": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.03375797271728516,
+      "avg_verify_time": 0.0047235250473022464,
+      "total_time": 0.33757972717285156
+    },
+    "BLS_model1000_clients50_rounds1": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.17415356636047363,
+      "avg_verify_time": 0.02135181427001953,
+      "total_time": 0.17415356636047363
+    },
+    "BLS_model1000_clients50_rounds5": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.1668529510498047,
+      "avg_verify_time": 0.021129369735717773,
+      "total_time": 0.8342647552490234
+    },
+    "BLS_model1000_clients50_rounds10": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.1692185640335083,
+      "avg_verify_time": 0.02130880355834961,
+      "total_time": 1.692185640335083
+    }
+  },
+  "FL_Additive_HMAC": {
+    "Additive_HMAC_model100_clients10_rounds1": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.005231618881225586,
+      "avg_verify_time": 0,
+      "total_time": 0.005231618881225586
+    },
+    "Additive_HMAC_model100_clients10_rounds5": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.0002178192138671875,
+      "avg_verify_time": 0,
+      "total_time": 0.0010890960693359375
+    },
+    "Additive_HMAC_model100_clients10_rounds10": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.0002164602279663086,
+      "avg_verify_time": 0,
+      "total_time": 0.002164602279663086
+    },
+    "Additive_HMAC_model100_clients50_rounds1": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.0010819435119628906,
+      "avg_verify_time": 0,
+      "total_time": 0.0010819435119628906
+    },
+    "Additive_HMAC_model100_clients50_rounds5": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.0010754585266113282,
+      "avg_verify_time": 0,
+      "total_time": 0.005377292633056641
+    },
+    "Additive_HMAC_model100_clients50_rounds10": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.0010685920715332031,
+      "avg_verify_time": 0,
+      "total_time": 0.010685920715332031
+    },
+    "Additive_HMAC_model500_clients10_rounds1": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.00032258033752441406,
+      "avg_verify_time": 0,
+      "total_time": 0.00032258033752441406
+    },
+    "Additive_HMAC_model500_clients10_rounds5": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.0003082752227783203,
+      "avg_verify_time": 0,
+      "total_time": 0.0015413761138916016
+    },
+    "Additive_HMAC_model500_clients10_rounds10": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.00030639171600341795,
+      "avg_verify_time": 0,
+      "total_time": 0.0030639171600341797
+    },
+    "Additive_HMAC_model500_clients50_rounds1": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.0015263557434082031,
+      "avg_verify_time": 0,
+      "total_time": 0.0015263557434082031
+    },
+    "Additive_HMAC_model500_clients50_rounds5": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.0015315532684326172,
+      "avg_verify_time": 0,
+      "total_time": 0.007657766342163086
+    },
+    "Additive_HMAC_model500_clients50_rounds10": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.0015254497528076171,
+      "avg_verify_time": 0,
+      "total_time": 0.015254497528076172
+    },
+    "Additive_HMAC_model1000_clients10_rounds1": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.00042939186096191406,
+      "avg_verify_time": 0,
+      "total_time": 0.00042939186096191406
+    },
+    "Additive_HMAC_model1000_clients10_rounds5": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.0004157543182373047,
+      "avg_verify_time": 0,
+      "total_time": 0.0020787715911865234
+    },
+    "Additive_HMAC_model1000_clients10_rounds10": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.0004165410995483398,
+      "avg_verify_time": 0,
+      "total_time": 0.0041654109954833984
+    },
+    "Additive_HMAC_model1000_clients50_rounds1": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.002077817916870117,
+      "avg_verify_time": 0,
+      "total_time": 0.002077817916870117
+    },
+    "Additive_HMAC_model1000_clients50_rounds5": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.0020876407623291017,
+      "avg_verify_time": 0,
+      "total_time": 0.010438203811645508
+    },
+    "Additive_HMAC_model1000_clients50_rounds10": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.00207827091217041,
+      "avg_verify_time": 0,
+      "total_time": 0.0207827091217041
+    }
+  },
+  "FL_Linear_HMAC": {
+    "Linear_HMAC_model100_clients10_rounds1": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.0031287670135498047,
+      "avg_verify_time": 0,
+      "total_time": 0.0031287670135498047
+    },
+    "Linear_HMAC_model100_clients10_rounds5": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.0024255752563476563,
+      "avg_verify_time": 0,
+      "total_time": 0.012127876281738281
+    },
+    "Linear_HMAC_model100_clients10_rounds10": {
+      "model_dim": 100,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.0024657249450683594,
+      "avg_verify_time": 0,
+      "total_time": 0.024657249450683594
+    },
+    "Linear_HMAC_model100_clients50_rounds1": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.012420177459716797,
+      "avg_verify_time": 0,
+      "total_time": 0.012420177459716797
+    },
+    "Linear_HMAC_model100_clients50_rounds5": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.0129974365234375,
+      "avg_verify_time": 0,
+      "total_time": 0.0649871826171875
+    },
+    "Linear_HMAC_model100_clients50_rounds10": {
+      "model_dim": 100,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.018416213989257812,
+      "avg_verify_time": 0,
+      "total_time": 0.18416213989257812
+    },
+    "Linear_HMAC_model500_clients10_rounds1": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.014371633529663086,
+      "avg_verify_time": 0,
+      "total_time": 0.014371633529663086
+    },
+    "Linear_HMAC_model500_clients10_rounds5": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.012664604187011718,
+      "avg_verify_time": 0,
+      "total_time": 0.0633230209350586
+    },
+    "Linear_HMAC_model500_clients10_rounds10": {
+      "model_dim": 500,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.014335870742797852,
+      "avg_verify_time": 0,
+      "total_time": 0.14335870742797852
+    },
+    "Linear_HMAC_model500_clients50_rounds1": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.058652400970458984,
+      "avg_verify_time": 0,
+      "total_time": 0.058652400970458984
+    },
+    "Linear_HMAC_model500_clients50_rounds5": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.05737128257751465,
+      "avg_verify_time": 0,
+      "total_time": 0.28685641288757324
+    },
+    "Linear_HMAC_model500_clients50_rounds10": {
+      "model_dim": 500,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.06718523502349853,
+      "avg_verify_time": 0,
+      "total_time": 0.6718523502349854
+    },
+    "Linear_HMAC_model1000_clients10_rounds1": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 1,
+      "avg_round_time": 0.03537344932556152,
+      "avg_verify_time": 0,
+      "total_time": 0.03537344932556152
+    },
+    "Linear_HMAC_model1000_clients10_rounds5": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 5,
+      "avg_round_time": 0.023411893844604494,
+      "avg_verify_time": 0,
+      "total_time": 0.11705946922302246
+    },
+    "Linear_HMAC_model1000_clients10_rounds10": {
+      "model_dim": 1000,
+      "num_clients": 10,
+      "num_rounds": 10,
+      "avg_round_time": 0.025559163093566893,
+      "avg_verify_time": 0,
+      "total_time": 0.25559163093566895
+    },
+    "Linear_HMAC_model1000_clients50_rounds1": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 1,
+      "avg_round_time": 0.11327624320983887,
+      "avg_verify_time": 0,
+      "total_time": 0.11327624320983887
+    },
+    "Linear_HMAC_model1000_clients50_rounds5": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 5,
+      "avg_round_time": 0.11540899276733399,
+      "avg_verify_time": 0,
+      "total_time": 0.5770449638366699
+    },
+    "Linear_HMAC_model1000_clients50_rounds10": {
+      "model_dim": 1000,
+      "num_clients": 50,
+      "num_rounds": 10,
+      "avg_round_time": 0.13499786853790283,
+      "avg_verify_time": 0,
+      "total_time": 1.3499786853790283
+    }
+  }
+}

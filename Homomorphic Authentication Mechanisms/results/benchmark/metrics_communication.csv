@@ -1,0 +1,11 @@
+algorithm,signature_size,public_key_size,private_key_size,tag_size,ciphertext_size,total_message_size,aggregate_signature_size,compression_ratio,nonce_size,proof_of_possession_size,message_commitment_size,metadata_per_round,timestamp
+BLS,96,48,0,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:32:40.565043
+LHS,65,65,0,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:33:09.906383
+Waters,65,65,0,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:37:36.366366
+BonehBoyen,65,65,0,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:38:05.056860
+RSA,256,256,0,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:39:09.784561
+EdDSA,64,32,0,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:39:11.608131
+Additive_HMAC,32,0,32,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:39:12.107337
+Linear_HMAC,32,0,32,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:39:13.074238
+Polynomial_HMAC,32,0,32,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:39:13.360428
+Lattice_HMAC,32,0,2048,0,0,0,0,1.0,0,0,0,0,2025-12-15T21:39:23.587641
