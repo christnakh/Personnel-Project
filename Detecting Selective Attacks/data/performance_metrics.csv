@@ -1,0 +1,3 @@
+,Total Packets Sent,Total Packets Received,Packet Delivery Ratio,Total Energy Consumed,Detection Rate
+DSR,200.0,198.0,0.99,94.47958880859017,0.0222
+SFA,341.0,173.0,0.5073313782991202,90.57757027967709,0.0222

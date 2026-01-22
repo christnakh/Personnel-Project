@@ -1,0 +1,17 @@
+Simulation Functionality Summary
+--------------------------------
+Total RREQs sent: 4673
+Total RREPs sent: 47
+Total RERRs sent: 0
+Total Forwarding Packets sent: 5000
+Total ALARM messages sent: 111
+Total ACKs sent: 36
+Total ACKs received: 27
+Total DoS Packets sent: 0
+Total Successful Routes Established: 47
+Total Nodes Deactivated due to Energy Loss: 0
+--------------------------------
+Detailed simulation data, performance metrics, and charts have been saved.
+Refer to the CSV files for analysis.
+--------------------------------
+End of Simulation Functionality Summary.
