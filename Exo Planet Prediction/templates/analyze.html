@@ -1,0 +1,441 @@
+{% extends "base.html" %}
+
+{% block title %}🔭 Exoplanet Analysis - Single Analysis{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                <i class="fas fa-search"></i> Exoplanet Analysis
+            </h1>
+            <p class="lead">Analyze individual exoplanet candidates with comprehensive scientific features.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Input Form -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-edit"></i> Input Parameters
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form id="analysisForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="period" class="form-label">Orbital Period (days)</label>
+                                <input type="number" class="form-control" id="period" name="period" 
+                                       value="365.25" step="0.01" min="0.1" max="10000">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="duration" class="form-label">Transit Duration (hours)</label>
+                                <input type="number" class="form-control" id="duration" name="duration" 
+                                       value="13.0" step="0.1" min="0.1" max="100">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="depth" class="form-label">Transit Depth (ppm)</label>
+                                <input type="number" class="form-control" id="depth" name="depth" 
+                                       value="1000" step="1" min="1" max="100000">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="planet_radius" class="form-label">Planet Radius (Earth radii)</label>
+                                <input type="number" class="form-control" id="planet_radius" name="planet_radius" 
+                                       value="1.0" step="0.1" min="0.1" max="50">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="stellar_radius" class="form-label">Stellar Radius (Solar radii)</label>
+                                <input type="number" class="form-control" id="stellar_radius" name="stellar_radius" 
+                                       value="1.0" step="0.1" min="0.1" max="10">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="stellar_temp" class="form-label">Stellar Temperature (K)</label>
+                                <input type="number" class="form-control" id="stellar_temp" name="stellar_temp" 
+                                       value="5778" step="1" min="2000" max="10000">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="stellar_mag" class="form-label">Stellar Magnitude</label>
+                                <input type="number" class="form-control" id="stellar_mag" name="stellar_mag" 
+                                       value="12.0" step="0.1" min="0" max="30">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="impact_param" class="form-label">Impact Parameter</label>
+                                <input type="number" class="form-control" id="impact_param" name="impact_param" 
+                                       value="0.5" step="0.01" min="0" max="1">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="transit_snr" class="form-label">Transit SNR</label>
+                                <input type="number" class="form-control" id="transit_snr" name="transit_snr" 
+                                       value="10.0" step="0.1" min="0" max="1000">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="num_transits" class="form-label">Number of Transits</label>
+                                <input type="number" class="form-control" id="num_transits" name="num_transits" 
+                                       value="10" step="1" min="1" max="1000">
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg" id="analyzeButton">
+                                <span id="buttonText">
+                                    <i class="fas fa-rocket"></i> Analyze Exoplanet
+                                </span>
+                                <span id="buttonLoading" class="d-none">
+                                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                    Analyzing...
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-line"></i> Analysis Results
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="loadingSpinner" class="text-center d-none">
+                        <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <h5 class="text-primary">🔬 Analyzing Exoplanet</h5>
+                        <p class="text-muted" id="loadingText">Initializing analysis...</p>
+                        <div class="progress mb-3" style="height: 8px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-3">
+                                <div class="loading-step" id="step1">
+                                    <i class="fas fa-database text-muted"></i>
+                                    <small class="d-block text-muted">Data Prep</small>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="loading-step" id="step2">
+                                    <i class="fas fa-brain text-muted"></i>
+                                    <small class="d-block text-muted">ML Models</small>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="loading-step" id="step3">
+                                    <i class="fas fa-globe text-muted"></i>
+                                    <small class="d-block text-muted">Habitability</small>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="loading-step" id="step4">
+                                    <i class="fas fa-search text-muted"></i>
+                                    <small class="d-block text-muted">Anomaly</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="resultsContainer" class="d-none">
+                        <!-- Classification Results -->
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-brain"></i> Classification Results
+                            </h6>
+                            <div class="card border-primary">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-muted">Prediction</h6>
+                                            <h4 class="text-primary" id="prediction">-</h4>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-muted">Confidence</h6>
+                                            <h4 class="text-success" id="confidence">-</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="probabilitiesChart" class="mb-3">
+                                <canvas id="probabilitiesCanvas" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Habitability Results -->
+                        <div class="mb-4">
+                            <h6 class="text-success mb-3">
+                                <i class="fas fa-globe"></i> Habitability Analysis
+                            </h6>
+                            <div class="card" id="habitabilityCard">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h6 class="text-muted">Habitable</h6>
+                                            <h4 id="isHabitable">-</h4>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6 class="text-muted">Score</h6>
+                                            <h4 id="habitabilityScore">-</h4>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6 class="text-muted">Temperature</h6>
+                                            <h4 id="equilibriumTemp">-</h4>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6 class="text-muted">Zone Position</h6>
+                                            <h4 id="hzPosition">-</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Anomaly Detection -->
+                        <div class="mb-4">
+                            <h6 class="text-warning">⚠️ Anomaly Detection</h6>
+                            <div class="alert" id="anomalyAlert">
+                                <strong>Anomaly:</strong> <span id="isAnomaly"></span><br>
+                                <strong>Anomaly Type:</strong> <span id="anomalyType"></span><br>
+                                <strong>Confidence:</strong> <span id="anomalyConfidence"></span>
+                            </div>
+                        </div>
+
+                        <!-- Processing Info -->
+                        <div class="text-muted small">
+                            <strong>Processing Time:</strong> <span id="processingTime"></span> ms<br>
+                            <strong>Analysis ID:</strong> <span id="analysisId"></span>
+                        </div>
+                    </div>
+
+                    <div id="errorContainer" class="d-none">
+                        <div class="alert alert-danger">
+                            <h6><i class="fas fa-exclamation-triangle"></i> Error</h6>
+                            <p id="errorMessage"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('analysisForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    console.log('Form submitted!'); // Debug log
+    
+    // Update button state
+    document.getElementById('buttonText').classList.add('d-none');
+    document.getElementById('buttonLoading').classList.remove('d-none');
+    document.getElementById('analyzeButton').disabled = true;
+    
+    // Show loading spinner
+    document.getElementById('loadingSpinner').classList.remove('d-none');
+    document.getElementById('resultsContainer').classList.add('d-none');
+    document.getElementById('errorContainer').classList.add('d-none');
+    
+    // Start loading animation
+    startLoadingAnimation();
+    
+    try {
+        // Collect form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Convert to numbers
+        Object.keys(data).forEach(key => {
+            data[key] = parseFloat(data[key]);
+        });
+        
+        // Make API request
+        console.log('Making API request with data:', data); // Debug log
+        const response = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        console.log('API response status:', response.status); // Debug log
+        const result = await response.json();
+        console.log('API result:', result); // Debug log
+        
+        if (response.ok) {
+            // Stop loading animation and hide spinner
+            stopLoadingAnimation();
+            document.getElementById('loadingSpinner').classList.add('d-none');
+            // Display results
+            displayResults(result);
+        } else {
+            throw new Error(result.error || 'Analysis failed');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        stopLoadingAnimation();
+        showError(error.message);
+    } finally {
+        // Reset button state
+        document.getElementById('buttonText').classList.remove('d-none');
+        document.getElementById('buttonLoading').classList.add('d-none');
+        document.getElementById('analyzeButton').disabled = false;
+        
+        // Hide loading spinner
+        document.getElementById('loadingSpinner').classList.add('d-none');
+    }
+});
+
+function displayResults(result) {
+    console.log('Displaying results:', result); // Debug log
+    
+    // Classification
+    document.getElementById('prediction').textContent = result.classification.prediction;
+    document.getElementById('confidence').textContent = (result.classification.confidence * 100).toFixed(1) + '%';
+    
+    // Probabilities chart
+    createProbabilitiesChart(result.classification.probabilities);
+    
+    // Habitability
+    const habitability = result.habitability;
+    const habitabilityCard = document.getElementById('habitabilityCard');
+    habitabilityCard.className = habitability.is_habitable ? 'card border-success' : 'card border-danger';
+    
+    document.getElementById('isHabitable').textContent = habitability.is_habitable ? 'YES' : 'NO';
+    document.getElementById('isHabitable').className = habitability.is_habitable ? 'text-success' : 'text-danger';
+    document.getElementById('habitabilityScore').textContent = (habitability.habitability_score * 100).toFixed(1) + '%';
+    document.getElementById('equilibriumTemp').textContent = habitability.equilibrium_temp.toFixed(1) + ' K';
+    document.getElementById('hzPosition').textContent = habitability.habitable_zone_position;
+    
+    // Anomaly detection
+    const anomaly = result.anomaly_detection;
+    const anomalyAlert = document.getElementById('anomalyAlert');
+    anomalyAlert.className = anomaly.is_anomaly ? 'alert alert-warning' : 'alert alert-success';
+    
+    document.getElementById('isAnomaly').textContent = anomaly.is_anomaly ? 'YES' : 'NO';
+    document.getElementById('anomalyType').textContent = anomaly.anomaly_type;
+    document.getElementById('anomalyConfidence').textContent = (anomaly.confidence * 100).toFixed(1) + '%';
+    
+    // Processing info
+    document.getElementById('processingTime').textContent = result.processing_time_ms;
+    document.getElementById('analysisId').textContent = result.prediction_id;
+    
+    // Show results
+    console.log('Showing results container'); // Debug log
+    document.getElementById('resultsContainer').classList.remove('d-none');
+}
+
+let loadingTimeouts = [];
+
+function startLoadingAnimation() {
+    // Clear any existing timeouts
+    loadingTimeouts.forEach(timeout => clearTimeout(timeout));
+    loadingTimeouts = [];
+    
+    const steps = [
+        { id: 'step1', text: 'Preparing astrophysical data...', delay: 0 },
+        { id: 'step2', text: 'Running ML classification models...', delay: 500 },
+        { id: 'step3', text: 'Calculating habitability scores...', delay: 1000 },
+        { id: 'step4', text: 'Detecting anomalies...', delay: 1500 }
+    ];
+    
+    steps.forEach((step, index) => {
+        const timeout = setTimeout(() => {
+            // Highlight current step
+            const stepElement = document.getElementById(step.id);
+            const icon = stepElement.querySelector('i');
+            const text = stepElement.querySelector('small');
+            
+            // Set appropriate icon for each step
+            const icons = ['fas fa-database', 'fas fa-brain', 'fas fa-globe', 'fas fa-search'];
+            icon.className = icons[index] + ' text-primary';
+            text.className = 'd-block text-primary';
+            
+            // Update loading text
+            document.getElementById('loadingText').textContent = step.text;
+            
+            // Reset previous steps
+            for (let i = 0; i < index; i++) {
+                const prevStep = document.getElementById(steps[i].id);
+                const prevIcon = prevStep.querySelector('i');
+                const prevText = prevStep.querySelector('small');
+                prevIcon.className = icons[i] + ' text-success';
+                prevText.className = 'd-block text-success';
+            }
+        }, step.delay);
+        
+        loadingTimeouts.push(timeout);
+    });
+}
+
+function stopLoadingAnimation() {
+    // Clear all timeouts
+    loadingTimeouts.forEach(timeout => clearTimeout(timeout));
+    loadingTimeouts = [];
+    
+    // Mark all steps as completed
+    const steps = ['step1', 'step2', 'step3', 'step4'];
+    const icons = ['fas fa-database', 'fas fa-brain', 'fas fa-globe', 'fas fa-search'];
+    
+    steps.forEach((stepId, index) => {
+        const stepElement = document.getElementById(stepId);
+        const icon = stepElement.querySelector('i');
+        const text = stepElement.querySelector('small');
+        icon.className = icons[index] + ' text-success';
+        text.className = 'd-block text-success';
+    });
+    
+    document.getElementById('loadingText').textContent = 'Analysis complete!';
+}
+
+function createProbabilitiesChart(probabilities) {
+    const ctx = document.getElementById('probabilitiesCanvas').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: Object.keys(probabilities).map(key => key.charAt(0).toUpperCase() + key.slice(1)),
+            datasets: [{
+                data: Object.values(probabilities).map(val => val * 100),
+                backgroundColor: [
+                    '#28a745', // confirmed - green
+                    '#ffc107', // candidate - yellow
+                    '#dc3545'  // false_positive - red
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+}
+
+function showError(message) {
+    document.getElementById('errorMessage').textContent = message;
+    document.getElementById('errorContainer').classList.remove('d-none');
+}
+</script>
+{% endblock %}

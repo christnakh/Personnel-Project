@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+{% block title %}🔭 Exoplanet Analysis - Batch Upload{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                <i class="fas fa-upload"></i> Batch Analysis
+            </h1>
+            <p class="lead">Upload CSV files for batch analysis of multiple exoplanet candidates.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Upload Form -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-file-upload"></i> Upload CSV File
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form id="batchForm" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="csvFile" class="form-label">Select CSV File</label>
+                            <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv" required>
+                            <div class="form-text">
+                                CSV file should contain columns: period, duration, depth, planet_radius, 
+                                stellar_radius, stellar_temp, stellar_mag, impact_param, transit_snr, num_transits
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="analysisType" class="form-label">Analysis Type</label>
+                            <select class="form-select" id="analysisType" name="analysisType">
+                                <option value="full">Full Analysis (Classification + Habitability + Anomaly)</option>
+                                <option value="classification">Classification Only</option>
+                                <option value="habitability">Habitability Only</option>
+                                <option value="anomaly">Anomaly Detection Only</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-rocket"></i> Start Batch Analysis
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sample Data -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-download"></i> Sample CSV Format
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p class="small">Download a sample CSV file to see the required format:</p>
+                    <button class="btn btn-outline-primary btn-sm" onclick="downloadSample()">
+                        <i class="fas fa-download"></i> Download Sample CSV
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-bar"></i> Batch Results
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="loadingSpinner" class="text-center d-none">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Processing batch analysis...</p>
+                    </div>
+
+                    <div id="resultsContainer" class="d-none">
+                        <!-- Summary -->
+                        <div class="mb-4">
+                            <h6 class="text-primary">📊 Summary</h6>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h4 class="text-primary" id="totalCandidates">0</h4>
+                                            <small>Total Candidates</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <div class="card-body text-center">
+                                            <h4 class="text-success" id="habitableCount">0</h4>
+                                            <small>Habitable</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results Table -->
+                        <div class="mb-4">
+                            <h6 class="text-info">📋 Detailed Results</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Prediction</th>
+                                            <th>Confidence</th>
+                                            <th>Habitable</th>
+                                            <th>Anomaly</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="resultsTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Download Results -->
+                        <div class="d-grid">
+                            <button class="btn btn-primary" onclick="downloadResults()">
+                                <i class="fas fa-download"></i> Download Results CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="errorContainer" class="d-none">
+                        <div class="alert alert-danger">
+                            <h6><i class="fas fa-exclamation-triangle"></i> Error</h6>
+                            <p id="errorMessage"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let batchResults = null;
+
+document.getElementById('batchForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Show loading spinner
+    document.getElementById('loadingSpinner').classList.remove('d-none');
+    document.getElementById('resultsContainer').classList.add('d-none');
+    document.getElementById('errorContainer').classList.add('d-none');
+    
+    try {
+        const formData = new FormData(this);
+        const analysisType = formData.get('analysisType');
+        
+        // Read CSV file
+        const file = document.getElementById('csvFile').files[0];
+        const csvData = await readCSVFile(file);
+        
+        // Prepare candidates data
+        const candidates = csvData.map(row => ({
+            period: parseFloat(row.period) || 365.25,
+            duration: parseFloat(row.duration) || 13.0,
+            depth: parseFloat(row.depth) || 1000.0,
+            planet_radius: parseFloat(row.planet_radius) || 1.0,
+            stellar_radius: parseFloat(row.stellar_radius) || 1.0,
+            stellar_temp: parseFloat(row.stellar_temp) || 5778.0,
+            stellar_mag: parseFloat(row.stellar_mag) || 12.0,
+            impact_param: parseFloat(row.impact_param) || 0.5,
+            transit_snr: parseFloat(row.transit_snr) || 10.0,
+            num_transits: parseInt(row.num_transits) || 10
+        }));
+        
+        // Make API request
+        const response = await fetch('/api/batch', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ candidates })
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            batchResults = result;
+            displayBatchResults(result);
+        } else {
+            throw new Error(result.error || 'Batch analysis failed');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        showError(error.message);
+    } finally {
+        document.getElementById('loadingSpinner').classList.add('d-none');
+    }
+});
+
+function readCSVFile(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const text = e.target.result;
+            const lines = text.split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            const data = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                if (lines[i].trim()) {
+                    const values = lines[i].split(',').map(v => v.trim());
+                    const row = {};
+                    headers.forEach((header, index) => {
+                        row[header] = values[index] || '';
+                    });
+                    data.push(row);
+                }
+            }
+            
+            resolve(data);
+        };
+        reader.onerror = reject;
+        reader.readAsText(file);
+    });
+}
+
+function displayBatchResults(result) {
+    const results = result.results;
+    
+    // Summary
+    document.getElementById('totalCandidates').textContent = result.total_candidates;
+    const habitableCount = results.filter(r => r.habitability && r.habitability.is_habitable).length;
+    document.getElementById('habitableCount').textContent = habitableCount;
+    
+    // Results table
+    const tbody = document.getElementById('resultsTable');
+    tbody.innerHTML = '';
+    
+    results.forEach((result, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td><span class="badge bg-${getPredictionColor(result.classification.prediction)}">${result.classification.prediction}</span></td>
+            <td>${(result.classification.confidence * 100).toFixed(1)}%</td>
+            <td><span class="badge bg-${result.habitability.is_habitable ? 'success' : 'danger'}">${result.habitability.is_habitable ? 'YES' : 'NO'}</span></td>
+            <td><span class="badge bg-${result.anomaly_detection.is_anomaly ? 'warning' : 'success'}">${result.anomaly_detection.is_anomaly ? 'YES' : 'NO'}</span></td>
+        `;
+        tbody.appendChild(row);
+    });
+    
+    // Show results
+    document.getElementById('resultsContainer').classList.remove('d-none');
+}
+
+function getPredictionColor(prediction) {
+    switch(prediction) {
+        case 'confirmed': return 'success';
+        case 'candidate': return 'warning';
+        case 'false_positive': return 'danger';
+        default: return 'secondary';
+    }
+}
+
+function downloadSample() {
+    const sampleData = [
+        ['period', 'duration', 'depth', 'planet_radius', 'stellar_radius', 'stellar_temp', 'stellar_mag', 'impact_param', 'transit_snr', 'num_transits'],
+        ['365.25', '13.0', '1000', '1.0', '1.0', '5778', '12.0', '0.5', '10.0', '10'],
+        ['3.0', '2.0', '50000', '10.0', '1.0', '6000', '10.0', '0.3', '50.0', '5'],
+        ['100.0', '5.0', '5000', '2.0', '0.8', '5000', '14.0', '0.7', '15.0', '20']
+    ];
+    
+    const csvContent = sampleData.map(row => row.join(',')).join('\n');
+    downloadCSV(csvContent, 'sample_exoplanet_data.csv');
+}
+
+function downloadResults() {
+    if (!batchResults) return;
+    
+    const headers = ['ID', 'Prediction', 'Confidence', 'Habitable', 'Habitability_Score', 'Anomaly', 'Anomaly_Type'];
+    const rows = [headers];
+    
+    batchResults.results.forEach((result, index) => {
+        rows.push([
+            index + 1,
+            result.classification.prediction,
+            (result.classification.confidence * 100).toFixed(1) + '%',
+            result.habitability.is_habitable ? 'YES' : 'NO',
+            (result.habitability.habitability_score * 100).toFixed(1) + '%',
+            result.anomaly_detection.is_anomaly ? 'YES' : 'NO',
+            result.anomaly_detection.anomaly_type
+        ]);
+    });
+    
+    const csvContent = rows.map(row => row.join(',')).join('\n');
+    downloadCSV(csvContent, 'exoplanet_analysis_results.csv');
+}
+
+function downloadCSV(content, filename) {
+    const blob = new Blob([content], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
+function showError(message) {
+    document.getElementById('errorMessage').textContent = message;
+    document.getElementById('errorContainer').classList.remove('d-none');
+}
+</script>
+{% endblock %}

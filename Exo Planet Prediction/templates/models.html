@@ -1,0 +1,346 @@
+{% extends "base.html" %}
+
+{% block title %}🤖 ML Models - Exoplanet Analysis{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                <i class="fas fa-brain"></i> Machine Learning Models
+            </h1>
+            <p class="lead">Comprehensive overview of our advanced ML models for exoplanet analysis</p>
+        </div>
+    </div>
+
+    <!-- Model Overview Cards -->
+    <div class="row mb-5">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🚀 XGBoost</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-rocket fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="text-primary">Gradient Boosting</h6>
+                    <p class="small text-muted">Advanced ensemble method using gradient boosting</p>
+                    <div class="metrics">
+                        <div class="metric-item">
+                            <strong>Accuracy:</strong> 80.4%
+                        </div>
+                        <div class="metric-item">
+                            <strong>AUC:</strong> 92.9%
+                        </div>
+                        <div class="metric-item">
+                            <strong>Type:</strong> Tabular ML
+                        </div>
+                    </div>
+                    <a href="/models/xgboost" class="btn btn-primary btn-sm mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">🌲 Random Forest</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-tree fa-3x text-info"></i>
+                    </div>
+                    <h6 class="text-info">Ensemble Trees</h6>
+                    <p class="small text-muted">Multiple decision trees for robust predictions</p>
+                    <div class="metrics">
+                        <div class="metric-item">
+                            <strong>Accuracy:</strong> 78.0%
+                        </div>
+                        <div class="metric-item">
+                            <strong>AUC:</strong> 91.9%
+                        </div>
+                        <div class="metric-item">
+                            <strong>Type:</strong> Tabular ML
+                        </div>
+                    </div>
+                    <a href="/models/random-forest" class="btn btn-info btn-sm mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0">🧠 CNN</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-brain fa-3x text-warning"></i>
+                    </div>
+                    <h6 class="text-warning">Deep Learning</h6>
+                    <p class="small text-muted">Convolutional neural network for light curve analysis</p>
+                    <div class="metrics">
+                        <div class="metric-item">
+                            <strong>Accuracy:</strong> 46.5%
+                        </div>
+                        <div class="metric-item">
+                            <strong>F1-Score:</strong> 29.5%
+                        </div>
+                        <div class="metric-item">
+                            <strong>Type:</strong> Deep Learning
+                        </div>
+                    </div>
+                    <a href="/models/cnn" class="btn btn-warning btn-sm mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🔗 Hybrid Model</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-link fa-3x text-success"></i>
+                    </div>
+                    <h6 class="text-success">Best Performance</h6>
+                    <p class="small text-muted">Combines CNN + XGBoost + Random Forest</p>
+                    <div class="metrics">
+                        <div class="metric-item">
+                            <strong>Accuracy:</strong> 83.5%
+                        </div>
+                        <div class="metric-item">
+                            <strong>AUC:</strong> 95.1%
+                        </div>
+                        <div class="metric-item">
+                            <strong>Type:</strong> Hybrid ML
+                        </div>
+                    </div>
+                    <a href="/models/hybrid" class="btn btn-success btn-sm mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Comparison Table -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">📊 Model Performance Comparison</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Type</th>
+                                    <th>Accuracy</th>
+                                    <th>AUC</th>
+                                    <th>F1-Score</th>
+                                    <th>Training Time</th>
+                                    <th>Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>XGBoost</strong></td>
+                                    <td><span class="badge bg-primary">Gradient Boosting</span></td>
+                                    <td><span class="text-success">80.4%</span></td>
+                                    <td><span class="text-success">92.9%</span></td>
+                                    <td><span class="text-info">78.2%</span></td>
+                                    <td>2.3 min</td>
+                                    <td>General classification</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Random Forest</strong></td>
+                                    <td><span class="badge bg-info">Ensemble</span></td>
+                                    <td><span class="text-success">78.0%</span></td>
+                                    <td><span class="text-success">91.9%</span></td>
+                                    <td><span class="text-info">75.8%</span></td>
+                                    <td>1.8 min</td>
+                                    <td>Feature importance</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CNN</strong></td>
+                                    <td><span class="badge bg-warning">Deep Learning</span></td>
+                                    <td><span class="text-warning">46.5%</span></td>
+                                    <td><span class="text-muted">N/A</span></td>
+                                    <td><span class="text-warning">29.5%</span></td>
+                                    <td>15.2 min</td>
+                                    <td>Light curve analysis</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <td><strong>Hybrid Model</strong></td>
+                                    <td><span class="badge bg-success">Hybrid</span></td>
+                                    <td><span class="text-success"><strong>83.5%</strong></span></td>
+                                    <td><span class="text-success"><strong>95.1%</strong></span></td>
+                                    <td><span class="text-success"><strong>81.3%</strong></span></td>
+                                    <td>19.3 min</td>
+                                    <td>Best overall performance</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scientific Features -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">🔬 Scientific Features</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-card">
+                                <h5 class="text-primary">🌍 Habitability Analysis</h5>
+                                <p class="text-muted">Calculate habitability scores based on stellar flux, temperature, and planetary parameters</p>
+                                <ul class="list-unstyled">
+                                    <li>• Size score (Earth-like radius preference)</li>
+                                    <li>• Stellar score (Sun-like star preference)</li>
+                                    <li>• Habitable zone score (liquid water range)</li>
+                                    <li>• Temperature score (optimal conditions)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-card">
+                                <h5 class="text-success">🤖 Explainable AI</h5>
+                                <p class="text-muted">SHAP and LIME explanations for model interpretability</p>
+                                <ul class="list-unstyled">
+                                    <li>• SHAP values for feature importance</li>
+                                    <li>• LIME explanations for individual predictions</li>
+                                    <li>• Model decision transparency</li>
+                                    <li>• Scientific interpretability</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-card">
+                                <h5 class="text-warning">🔍 Anomaly Detection</h5>
+                                <p class="text-muted">Isolation Forest for detecting unusual exoplanet systems</p>
+                                <ul class="list-unstyled">
+                                    <li>• Rare system identification</li>
+                                    <li>• Multi-planet system detection</li>
+                                    <li>• Unusual transit patterns</li>
+                                    <li>• Data quality assessment</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-card">
+                                <h5 class="text-info">🌌 Cross-Mission Validation</h5>
+                                <p class="text-muted">Robust validation across Kepler, TESS, and K2 missions</p>
+                                <ul class="list-unstyled">
+                                    <li>• Kepler → TESS generalization</li>
+                                    <li>• TESS → Kepler validation</li>
+                                    <li>• Mission-specific adaptations</li>
+                                    <li>• Robust performance metrics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">⚡ Quick Actions</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <a href="/analyze" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-search"></i><br>
+                                Single Analysis
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="/batch" class="btn btn-success btn-lg w-100">
+                                <i class="fas fa-upload"></i><br>
+                                Batch Processing
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="/dashboard" class="btn btn-info btn-lg w-100">
+                                <i class="fas fa-chart-bar"></i><br>
+                                Dashboard
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="/api-docs" class="btn btn-warning btn-lg w-100">
+                                <i class="fas fa-book"></i><br>
+                                API Docs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.metric-item {
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.metric-item:last-child {
+    border-bottom: none;
+}
+
+.feature-card {
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.table-success {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.btn-lg {
+    padding: 20px;
+    text-align: center;
+}
+
+.btn-lg i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+</style>
+{% endblock %}

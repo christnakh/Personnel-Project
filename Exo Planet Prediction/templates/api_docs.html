@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+
+{% block title %}🔭 Exoplanet Analysis - API Documentation{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                <i class="fas fa-code"></i> API Documentation
+            </h1>
+            <p class="lead">Complete API reference for the Exoplanet Analysis System.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <!-- API Overview -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-info-circle"></i> API Overview
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>The Exoplanet Analysis API provides comprehensive scientific analysis for exoplanet classification, habitability assessment, and anomaly detection.</p>
+                    <p><strong>Base URL:</strong> <code>http://localhost:5001</code></p>
+                    <p><strong>Content-Type:</strong> <code>application/json</code></p>
+                </div>
+            </div>
+
+            <!-- Endpoints -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list"></i> Available Endpoints
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Endpoint</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge bg-success">POST</span></td>
+                                    <td><code>/api/analyze</code></td>
+                                    <td>Complete analysis with all features</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-success">POST</span></td>
+                                    <td><code>/api/predict</code></td>
+                                    <td>Basic classification only</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-success">POST</span></td>
+                                    <td><code>/api/habitability</code></td>
+                                    <td>Habitability analysis only</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-success">POST</span></td>
+                                    <td><code>/api/explain</code></td>
+                                    <td>AI explanations</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-success">POST</span></td>
+                                    <td><code>/api/anomaly</code></td>
+                                    <td>Anomaly detection</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-success">POST</span></td>
+                                    <td><code>/api/batch</code></td>
+                                    <td>Batch analysis</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-primary">GET</span></td>
+                                    <td><code>/api/health</code></td>
+                                    <td>Health check</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete Analysis Endpoint -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-search"></i> Complete Analysis - <code>POST /api/analyze</code>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>Performs comprehensive analysis including classification, habitability, explanations, and anomaly detection.</p>
+                    
+                    <h6>Request Body:</h6>
+                    <pre><code>{
+  "period": 365.25,
+  "duration": 13.0,
+  "depth": 1000.0,
+  "planet_radius": 1.0,
+  "stellar_radius": 1.0,
+  "stellar_temp": 5778.0,
+  "stellar_mag": 12.0,
+  "impact_param": 0.5,
+  "transit_snr": 10.0,
+  "num_transits": 10
+}</code></pre>
+
+                    <h6>Response:</h6>
+                    <pre><code>{
+  "prediction_id": "uuid",
+  "timestamp": "2025-09-29T18:37:37.371676",
+  "processing_time_ms": 37.31,
+  "classification": {
+    "prediction": "confirmed",
+    "confidence": 0.466,
+    "probabilities": {
+      "candidate": 0.173,
+      "confirmed": 0.466,
+      "false_positive": 0.361
+    }
+  },
+  "habitability": {
+    "is_habitable": true,
+    "habitability_score": 0.8,
+    "equilibrium_temp": 5285.1,
+    "habitable_zone_position": "conservative"
+  },
+  "anomaly_detection": {
+    "is_anomaly": false,
+    "anomaly_type": "normal"
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Habitability Endpoint -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-globe-americas"></i> Habitability Analysis - <code>POST /api/habitability</code>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>Analyzes planetary habitability using scientific criteria.</p>
+                    
+                    <h6>Required Parameters:</h6>
+                    <ul>
+                        <li><code>period</code> - Orbital period (days)</li>
+                        <li><code>planet_radius</code> - Planet radius (Earth radii)</li>
+                        <li><code>stellar_radius</code> - Stellar radius (Solar radii)</li>
+                        <li><code>stellar_temp</code> - Stellar temperature (K)</li>
+                    </ul>
+
+                    <h6>Response:</h6>
+                    <pre><code>{
+  "habitability": {
+    "is_habitable": true,
+    "habitability_score": 0.8,
+    "equilibrium_temp": 5285.1,
+    "habitable_zone_position": "conservative",
+    "size_score": 1.0,
+    "stellar_score": 1.0,
+    "temperature_score": 0.0,
+    "habitable_zone_score": 1.0
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Batch Analysis Endpoint -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-upload"></i> Batch Analysis - <code>POST /api/batch</code>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>Processes multiple exoplanet candidates in a single request.</p>
+                    
+                    <h6>Request Body:</h6>
+                    <pre><code>{
+  "candidates": [
+    {
+      "period": 365.25,
+      "duration": 13.0,
+      "depth": 1000.0,
+      "planet_radius": 1.0,
+      "stellar_radius": 1.0,
+      "stellar_temp": 5778.0,
+      "stellar_mag": 12.0,
+      "impact_param": 0.5,
+      "transit_snr": 10.0,
+      "num_transits": 10
+    },
+    {
+      "period": 3.0,
+      "duration": 2.0,
+      "depth": 50000.0,
+      "planet_radius": 10.0,
+      "stellar_radius": 1.0,
+      "stellar_temp": 6000.0,
+      "stellar_mag": 10.0,
+      "impact_param": 0.3,
+      "transit_snr": 50.0,
+      "num_transits": 5
+    }
+  ]
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Example Usage -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-code"></i> Example Usage
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Python Example:</h6>
+                    <pre><code>import requests
+import json
+
+# Complete analysis
+response = requests.post('http://localhost:5001/api/analyze', 
+    json={
+        "period": 365.25,
+        "duration": 13.0,
+        "depth": 1000.0,
+        "planet_radius": 1.0,
+        "stellar_radius": 1.0,
+        "stellar_temp": 5778.0,
+        "stellar_mag": 12.0,
+        "impact_param": 0.5,
+        "transit_snr": 10.0,
+        "num_transits": 10
+    }
+)
+
+result = response.json()
+print(f"Prediction: {result['classification']['prediction']}")
+print(f"Habitable: {result['habitability']['is_habitable']}")</code></pre>
+
+                    <h6>cURL Example:</h6>
+                    <pre><code>curl -X POST http://localhost:5001/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{
+    "period": 365.25,
+    "duration": 13.0,
+    "depth": 1000.0,
+    "planet_radius": 1.0,
+    "stellar_radius": 1.0,
+    "stellar_temp": 5778.0,
+    "stellar_mag": 12.0,
+    "impact_param": 0.5,
+    "transit_snr": 10.0,
+    "num_transits": 10
+  }'</code></pre>
+                </div>
+            </div>
+
+            <!-- Error Handling -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-exclamation-triangle"></i> Error Handling
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>The API returns appropriate HTTP status codes and error messages:</p>
+                    <ul>
+                        <li><strong>200 OK</strong> - Successful request</li>
+                        <li><strong>400 Bad Request</strong> - Invalid input data</li>
+                        <li><strong>500 Internal Server Error</strong> - Server error</li>
+                    </ul>
+                    
+                    <h6>Error Response Format:</h6>
+                    <pre><code>{
+  "error": "Error message description"
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

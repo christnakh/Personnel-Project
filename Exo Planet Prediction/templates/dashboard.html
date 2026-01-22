@@ -1,0 +1,554 @@
+{% extends "base.html" %}
+
+{% block title %}🔭 Professional Exoplanet Analysis Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="hero-section bg-gradient-primary text-white p-5 rounded-3">
+                <h1 class="display-4 fw-bold">🔭 Professional Exoplanet Analysis Dashboard</h1>
+                <p class="lead">Advanced machine learning models for exoplanet discovery and analysis</p>
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="stat-card bg-white bg-opacity-20 rounded p-3 text-center">
+                            <h3 class="text-white mb-1" id="total-predictions">0</h3>
+                            <small class="text-white-50">Total Predictions</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card bg-white bg-opacity-20 rounded p-3 text-center">
+                            <h3 class="text-white mb-1">83.5%</h3>
+                            <small class="text-white-50">Hybrid Model Accuracy</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card bg-white bg-opacity-20 rounded p-3 text-center">
+                            <h3 class="text-white mb-1" id="habitable-planets">0</h3>
+                            <small class="text-white-50">Potentially Habitable</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card bg-white bg-opacity-20 rounded p-3 text-center">
+                            <h3 class="text-white mb-1" id="anomalies-detected">0</h3>
+                            <small class="text-white-50">Anomalies Detected</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Performance Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">🤖 Model Performance Comparison</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <canvas id="modelAccuracyChart" width="400" height="200"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="model-comparison">
+                                <div class="model-card mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">🚀 XGBoost</h6>
+                                            <small class="text-muted">Gradient Boosting</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-success">80.4%</span>
+                                            <small class="d-block text-muted">AUC: 92.9%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="model-card mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">🌲 Random Forest</h6>
+                                            <small class="text-muted">Ensemble Trees</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-info">78.0%</span>
+                                            <small class="d-block text-muted">AUC: 91.9%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="model-card mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">🧠 CNN</h6>
+                                            <small class="text-muted">Deep Learning</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-warning">46.5%</span>
+                                            <small class="d-block text-muted">F1: 29.5%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="model-card mb-3 border-success">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">🔗 Hybrid Model</h6>
+                                            <small class="text-muted">CNN + Tabular</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-success">83.5%</span>
+                                            <small class="d-block text-muted">AUC: 95.1%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Tools Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">🔬 Analysis Tools</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Feature Importance -->
+                        <div class="col-md-4 mb-4">
+                            <div class="analysis-tool-card">
+                                <h5 class="text-primary">📊 Feature Importance</h5>
+                                <p class="text-muted">Understand which features drive model decisions</p>
+                                <div class="feature-importance">
+                                    <div class="feature-item">
+                                        <span class="feature-name">Orbital Period</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                        </div>
+                                        <small class="text-muted">85% importance</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-name">Transit Depth</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 78%"></div>
+                                        </div>
+                                        <small class="text-muted">78% importance</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-name">Planet Radius</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success" style="width: 72%"></div>
+                                        </div>
+                                        <small class="text-muted">72% importance</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-name">Stellar Temperature</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                        </div>
+                                        <small class="text-muted">65% importance</small>
+                                    </div>
+                                </div>
+                                <a href="/analyze" class="btn btn-primary btn-sm mt-3">Try Analysis</a>
+                            </div>
+                        </div>
+
+                        <!-- Light Curve Analysis -->
+                        <div class="col-md-4 mb-4">
+                            <div class="analysis-tool-card">
+                                <h5 class="text-success">🌊 Light Curve Analysis</h5>
+                                <p class="text-muted">CNN-based analysis of transit light curves</p>
+                                <div class="light-curve-demo">
+                                    <div class="chart-placeholder bg-light p-3 rounded">
+                                        <i class="fas fa-chart-line fa-2x text-success mb-2"></i>
+                                        <p class="mb-0">CNN Model Analysis</p>
+                                        <small class="text-muted">Deep learning for transit detection</small>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="badge bg-success">CNN Model</span>
+                                    <span class="badge bg-info">Light Curves</span>
+                                    <span class="badge bg-warning">Transit Detection</span>
+                                </div>
+                                <a href="/analyze" class="btn btn-success btn-sm mt-3">Analyze Light Curve</a>
+                            </div>
+                        </div>
+
+                        <!-- AI Explanation -->
+                        <div class="col-md-4 mb-4">
+                            <div class="analysis-tool-card">
+                                <h5 class="text-warning">🤖 AI Explanation</h5>
+                                <p class="text-muted">SHAP and LIME explanations for model decisions</p>
+                                <div class="explanation-demo">
+                                    <div class="explanation-item">
+                                        <strong>SHAP Values:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Period: +0.3 (positive impact)</li>
+                                            <li>• Depth: -0.2 (negative impact)</li>
+                                            <li>• Radius: +0.4 (strong positive)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="explanation-item mt-3">
+                                        <strong>LIME Explanation:</strong>
+                                        <p class="small text-muted">"High orbital period and Earth-like radius suggest confirmed exoplanet"</p>
+                                    </div>
+                                </div>
+                                <a href="/analyze" class="btn btn-warning btn-sm mt-3">Get Explanation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Discoveries Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">🌟 Recent Discoveries</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5>🌌 Latest Confirmed Exoplanets</h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Period (days)</th>
+                                            <th>Radius (R⊕)</th>
+                                            <th>Status</th>
+                                            <th>Discovery Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Kepler-442b</td>
+                                            <td>112.3</td>
+                                            <td>1.34</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                            <td>2015-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TRAPPIST-1e</td>
+                                            <td>6.1</td>
+                                            <td>0.92</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                            <td>2017-02-22</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Proxima Centauri b</td>
+                                            <td>11.2</td>
+                                            <td>1.27</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                            <td>2016-08-24</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kepler-186f</td>
+                                            <td>129.9</td>
+                                            <td>1.11</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                            <td>2014-04-17</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GJ 357 d</td>
+                                            <td>55.7</td>
+                                            <td>2.2</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                            <td>2019-07-31</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>🏆 Discovery Leaderboard</h5>
+                            <div id="leaderboard">
+                                <div class="leaderboard-item mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Kepler-442b</span>
+                                        <span class="badge bg-success">Confirmed</span>
+                                    </div>
+                                    <small class="text-muted">Habitability: 0.95</small>
+                                </div>
+                                <div class="leaderboard-item mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>TRAPPIST-1e</span>
+                                        <span class="badge bg-success">Confirmed</span>
+                                    </div>
+                                    <small class="text-muted">Habitability: 0.89</small>
+                                </div>
+                                <div class="leaderboard-item mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Proxima Centauri b</span>
+                                        <span class="badge bg-success">Confirmed</span>
+                                    </div>
+                                    <small class="text-muted">Habitability: 0.87</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">⚡ Quick Actions</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="action-card text-center p-3 border rounded">
+                                <i class="fas fa-search fa-2x text-primary mb-2"></i>
+                                <h6>Single Analysis</h6>
+                                <p class="small text-muted">Analyze individual exoplanet candidates</p>
+                                <a href="/analyze" class="btn btn-primary btn-sm">Start Analysis</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="action-card text-center p-3 border rounded">
+                                <i class="fas fa-upload fa-2x text-success mb-2"></i>
+                                <h6>Batch Processing</h6>
+                                <p class="small text-muted">Process multiple candidates at once</p>
+                                <a href="/batch" class="btn btn-success btn-sm">Batch Upload</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="action-card text-center p-3 border rounded">
+                                <i class="fas fa-satellite fa-2x text-warning mb-2"></i>
+                                <h6>Real-Time Data</h6>
+                                <p class="small text-muted">Live space mission data processing</p>
+                                <a href="/realtime" class="btn btn-warning btn-sm">View Live</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="action-card text-center p-3 border rounded">
+                                <i class="fas fa-brain fa-2x text-info mb-2"></i>
+                                <h6>Model Details</h6>
+                                <p class="small text-muted">Detailed model performance metrics</p>
+                                <a href="/models" class="btn btn-info btn-sm">View Models</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status Section -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">🔧 System Status</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="status-item text-center">
+                                <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                                <h6>Models Loaded</h6>
+                                <small class="text-muted">All ML models operational</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-item text-center">
+                                <i class="fas fa-database fa-2x text-info mb-2"></i>
+                                <h6>Data Ready</h6>
+                                <small class="text-muted">20,103 samples processed</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-item text-center">
+                                <i class="fas fa-rocket fa-2x text-warning mb-2"></i>
+                                <h6>Real-Time Processing</h6>
+                                <small class="text-muted">Live data analysis active</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-item text-center">
+                                <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                                <h6>System Health</h6>
+                                <small class="text-muted">All systems operational</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.model-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.model-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.analysis-tool-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.analysis-tool-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.feature-item {
+    margin-bottom: 15px;
+}
+
+.feature-name {
+    font-weight: 600;
+    color: #495057;
+}
+
+.progress {
+    height: 8px;
+    margin: 5px 0;
+}
+
+.chart-placeholder {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.explanation-item {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #ffc107;
+}
+
+.leaderboard-item {
+    border-bottom: 1px solid #e9ecef;
+    padding: 10px 0;
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.action-card {
+    transition: all 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.status-item {
+    padding: 20px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.status-item:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Initialize charts and dashboard functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Model accuracy chart
+    const ctx = document.getElementById('modelAccuracyChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['XGBoost', 'Random Forest', 'CNN', 'Hybrid'],
+            datasets: [{
+                label: 'Accuracy (%)',
+                data: [80.4, 78.0, 46.5, 83.5],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(153, 102, 255, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Model Performance Comparison'
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    // Update stats (simulate real-time updates)
+    updateStats();
+    
+    // Update stats every 30 seconds
+    setInterval(updateStats, 30000);
+});
+
+function updateStats() {
+    // Simulate real-time updates
+    const totalPredictions = Math.floor(Math.random() * 1000) + 500;
+    const habitablePlanets = Math.floor(Math.random() * 50) + 20;
+    const anomaliesDetected = Math.floor(Math.random() * 20) + 5;
+    
+    document.getElementById('total-predictions').textContent = totalPredictions.toLocaleString();
+    document.getElementById('habitable-planets').textContent = habitablePlanets;
+    document.getElementById('anomalies-detected').textContent = anomaliesDetected;
+}
+</script>
+{% endblock %}

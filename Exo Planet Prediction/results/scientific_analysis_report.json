@@ -1,0 +1,39 @@
+{
+  "timestamp": "2025-09-29T21:03:44.771501",
+  "habitability_analysis": {
+    "habitability_score": 0.8,
+    "is_habitable": true,
+    "habitable_zone_score": 1.0,
+    "size_score": 1,
+    "temperature_score": 0,
+    "stellar_score": 1,
+    "equilibrium_temp": 5325.40889838236,
+    "habitable_zone_position": "conservative"
+  },
+  "anomaly_detection": {
+    "total_samples": 100,
+    "anomalies_detected": 10,
+    "anomaly_rate": 0.1
+  },
+  "model_performance": {
+    "xgboost": {
+      "predictions": "[0 0 2 ... 0 1 1]",
+      "probabilities": "[[0.54955673 0.00197918 0.44846407]\n [0.6194647  0.2046185  0.17591682]\n [0.04385868 0.00788682 0.94825447]\n ...\n [0.95955735 0.00158819 0.03885439]\n [0.06575849 0.6755775  0.258664  ]\n [0.354607   0.6184809  0.02691209]]",
+      "accuracy": 0.8037801541904999,
+      "auc": 0.9285200277333172
+    },
+    "random_forest": {
+      "predictions": "[0 0 2 ... 0 1 1]",
+      "probabilities": "[[0.57156339 0.00803987 0.42039674]\n [0.48441861 0.28258718 0.23299421]\n [0.046488   0.04195424 0.91155775]\n ...\n [0.89852314 0.00532367 0.09615319]\n [0.06997608 0.55597054 0.37405339]\n [0.23162394 0.70107461 0.06730144]]",
+      "accuracy": 0.7801541904998757,
+      "auc": 0.9189219155548826
+    },
+    "cnn": {
+      "accuracy": 0.458,
+      "precision": 0.209764,
+      "recall": 0.458,
+      "f1_score": 0.2877421124828532,
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.00      0.00      0.00       470\n           1       0.46      1.00      0.63       916\n           2       0.00      0.00      0.00       614\n\n    accuracy                           0.46      2000\n   macro avg       0.15      0.33      0.21      2000\nweighted avg       0.21      0.46      0.29      2000\n"
+    }
+  }
+}

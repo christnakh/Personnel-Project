@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}🔭 Exoplanet Analysis System - Home{% endblock %}
+
+{% block content %}
+<div class="hero-section bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-globe-americas"></i> Exoplanet Analysis System
+                </h1>
+                <p class="lead mb-4">
+                    Professional scientific analysis for exoplanet classification, habitability assessment, 
+                    and anomaly detection using advanced machine learning and AI.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('analyze') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-search"></i> Start Analysis
+                    </a>
+                    <a href="{{ url_for('api_docs') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-code"></i> API Documentation
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <i class="fas fa-satellite-dish display-1 opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <!-- Features Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-5">🔬 Scientific Features</h2>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 feature-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-globe-americas fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Habitability Analysis</h5>
+                    <p class="card-text">
+                        Binary prediction (YES/NO) with confidence scores, equilibrium temperature calculation, 
+                        and habitable zone analysis.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 feature-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-brain fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Explainable AI</h5>
+                    <p class="card-text">
+                        SHAP and LIME explanations for model predictions, feature importance analysis, 
+                        and human-readable interpretations.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 feature-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-exclamation-triangle fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Anomaly Detection</h5>
+                    <p class="card-text">
+                        Isolation Forest algorithm to detect unusual transit patterns, rare systems, 
+                        and potential exomoons or binary stars.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100 feature-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-project-diagram fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">CNN Analysis</h5>
+                    <p class="card-text">
+                        1D CNN for light curve analysis, hybrid models combining tabular and time-series data, 
+                        and advanced signal processing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Performance -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-5">📊 Model Performance</h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3 class="text-primary">80.4%</h3>
+                    <h5 class="card-title">XGBoost Accuracy</h5>
+                    <p class="card-text">92.9% AUC Score</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3 class="text-success">78.0%</h3>
+                    <h5 class="card-title">Random Forest</h5>
+                    <p class="card-text">91.9% AUC Score</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3 class="text-info">79.8%</h3>
+                    <h5 class="card-title">Ensemble Model</h5>
+                    <p class="card-text">92.8% AUC Score</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Features -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-5">🔬 Advanced Features</h2>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-tachometer-alt fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Advanced Dashboard</h5>
+                    <p class="card-text">
+                        Interactive dashboard with real-time analysis, NASA integration, 
+                        AI chatbot assistant, and comprehensive visualizations.
+                    </p>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-success btn-lg">
+                        <i class="fas fa-rocket me-2"></i>Open Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-robot fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">AI Research Assistant</h5>
+                    <p class="card-text">
+                        Intelligent chatbot that explains predictions, answers astronomy questions, 
+                        and provides educational content for all skill levels.
+                    </p>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-info btn-lg">
+                        <i class="fas fa-comments me-2"></i>Chat with AI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-5">🚀 Quick Start</h2>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-search text-primary"></i> Single Analysis
+                    </h5>
+                    <p class="card-text">
+                        Analyze individual exoplanet candidates with comprehensive scientific features.
+                    </p>
+                    <a href="{{ url_for('analyze') }}" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Start Analysis
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-upload text-success"></i> Batch Upload
+                    </h5>
+                    <p class="card-text">
+                        Upload CSV files for batch analysis of multiple exoplanet candidates.
+                    </p>
+                    <a href="{{ url_for('batch') }}" class="btn btn-success">
+                        <i class="fas fa-arrow-right"></i> Batch Upload
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
